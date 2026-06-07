@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refleksi Sekolah - SD Negeri 7 Pedungan</title>
+    <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1s6k8X_7RdGseH26wZ_WlAjZyQL_BIsxo">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+        
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            margin: 0; 
+            padding: 30px 15px; 
+            min-height: 100vh;
+            display: flex; 
+            justify-content: center; 
+            align-items: flex-start;
+            
+            /* Background gradasi statis yang elegan dan berwibawa */
+            background: linear-gradient(135deg, #0a192f 0%, #10347E 100%);
+            color: #2d3436;
+        }
+
+        /* Premium Frosted Glass (Bukan putih murni) */
+        .glass-card { 
+            background: rgba(245, 247, 250, 0.95); /* Warna pearl/alabaster lembut */
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-top: 5px solid #F5A623; /* Aksen elegan di bagian atas */
+            max-width: 650px; 
+            width: 100%; 
+            padding: 45px 40px; 
+            border-radius: 20px; 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(255,255,255,0.5); 
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .header-section { text-align: center; margin-bottom: 35px; border-bottom: 2px solid #dfe6e9; padding-bottom: 25px; }
+        .school-logo { width: 85px; height: auto; margin-bottom: 15px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
+        h2 { color: #10347E; margin: 0 0 8px 0; font-weight: 700; font-size: 24px; letter-spacing: -0.5px; }
+        p.subtitle { color: #636e72; font-size: 15px; margin: 0; font-weight: 500; }
+        
+        .section-title { 
+            background: #10347E; 
+            color: white; 
+            padding: 12px 20px; 
+            border-radius: 8px; 
+            margin: 40px 0 25px 0; 
+            font-weight: 600; 
+            font-size: 15px;
+            box-shadow: 0 4px 15px rgba(16, 52, 126, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efek kilap halus pada judul section */
+        .section-title::after {
+            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-20deg); animation: shine 6s infinite;
+        }
+        @keyframes shine { 0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; } }
+        
+        .form-group { margin-bottom: 28px; }
+        label.question-text { font-weight: 600; display: block; margin-bottom: 12px; font-size: 14px; line-height: 1.6; color: #1e272e; }
+        
+        input[type="text"], input[type="number"], select, textarea { 
+            width: 100%; padding: 15px; 
+            border: 1.5px solid #dcdde1; 
+            border-radius: 10px; 
+            box-sizing: border-box; font-family: inherit; font-size: 14px; 
+            background: #ffffff; color: #2f3640;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+        }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: #10347E; box-shadow: 0 0 0 4px rgba(16, 52, 126, 0.1); }
+
+        .legend-box {
+            background: #ffffff; border-left: 4px solid #10347E; padding: 15px 20px;
+            border-radius: 8px; margin-bottom: 25px; font-size: 13px; color: #485460;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+        .legend-box ul { margin: 8px 0 0 0; padding-left: 20px; line-height: 1.8; }
+
+        .likert-container { 
+            display: flex; justify-content: space-between; max-width: 450px; 
+            margin: 15px 0; padding: 15px; 
+            background: #ffffff; border-radius: 12px; 
+            border: 1px solid #dcdde1; box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        .likert-item input[type="radio"] { display: none; }
+        .likert-item label { 
+            display: flex; align-items: center; justify-content: center; 
+            width: 42px; height: 42px; border-radius: 50%; 
+            border: 2px solid #dcdde1; background: #f5f6fa; 
+            font-size: 15px; font-weight: 700; color: #718093; 
+            cursor: pointer; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); margin: 0 auto; 
+        }
+        .likert-item label:hover { border-color: #10347E; color: #10347E; transform: translateY(-2px); }
+        
+        /* Pewarnaan profesional seragam saat dipilih */
+        .likert-item input[type="radio"]:checked + label { 
+            background: #10347E; 
+            border-color: #10347E; 
+            color: white; 
+            transform: scale(1.1); 
+            box-shadow: 0 6px 15px rgba(16, 52, 126, 0.3); 
+        }
+
+        button.submit-btn { 
+            margin-top: 25px; width: 100%; padding: 16px; 
+            background: linear-gradient(135deg, #10347E, #1a46a0); color: white; 
+            border: none; border-radius: 10px; font-size: 16px; font-weight: 700; letter-spacing: 0.5px;
+            cursor: pointer; transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(16, 52, 126, 0.25);
+        }
+        button.submit-btn:hover { transform: translateY(-2px); box-shadow: 0 15px 25px rgba(16, 52, 126, 0.35); }
+        button.submit-btn:disabled { background: #b2bec3; cursor: not-allowed; transform: none; box-shadow: none; }
+
+        /* Tampilan Sukses */
+        #successMessage { display: none; text-align: center; padding: 40px 0; animation: fadeIn 0.8s ease; }
+        .check-icon { 
+            width: 80px; height: 80px; background: #00b894; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; 
+            margin: 0 auto 20px auto; box-shadow: 0 10px 25px rgba(0, 184, 148, 0.4); 
+            animation: scaleUp 0.5s ease; 
+        }
+        .check-icon svg { width: 40px; height: 40px; color: white; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes scaleUp { 0% { transform: scale(0); } 80% { transform: scale(1.2); } 100% { transform: scale(1); } }
+        
+        @media (max-width: 500px) { 
+            .glass-card { padding: 35px 25px; border-radius: 15px; } 
+            .likert-item label { width: 38px; height: 38px; font-size: 14px; } 
+            .likert-container { padding: 10px; }
+        }
+    </style>
+
+    <script>
+        var isSubmitted = false;
+        function handleFormSubmit() {
+            isSubmitted = true;
+            document.getElementById("submitBtn").innerHTML = "Mengirim Data... ⏳";
+            document.getElementById("submitBtn").disabled = true;
+        }
+        function handleFormLoad() {
+            if (isSubmitted) {
+                document.getElementById("mainForm").style.display = "none";
+                document.getElementById("successMessage").style.display = "block";
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="glass-card">
+    
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="handleFormLoad()"></iframe>
+
+    <div id="successMessage">
+        <div class="check-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+        </div>
+        <h2 style="color: #10347E;">Data Terkirim!</h2>
+        <p style="color: #636e72; margin-top: 10px; line-height: 1.6;">Terima kasih atas partisipasi Bapak/Ibu. Evaluasi dan masukan yang Bapak/Ibu berikan sangat berharga untuk peningkatan kualitas pendidikan di SD Negeri 7 Pedungan.</p>
+    </div>
+
+    <div id="mainForm">
+        <div class="header-section">
+            <img src="https://lh3.googleusercontent.com/d/1s6k8X_7RdGseH26wZ_WlAjZyQL_BIsxo" alt="Logo SD Negeri 7 Pedungan" class="school-logo">
+            <h2>Refleksi Akhir Tahun</h2>
+            <p class="subtitle">SD Negeri 7 Pedungan</p>
+        </div>
+        
+        <form action="https://script.google.com/macros/s/AKfycbxIRIq5Vozq7_Cnf47cG4hmt67nsMTo_zQd4g3L0foei7hJo8-u0DBOW60vUKkQdunmfg/exec" method="POST" target="hidden_iframe" onsubmit="handleFormSubmit()">
+            
+            <div class="section-title">A. Data Responden</div>
+            <div class="form-group"><label class="question-text">Nama Lengkap Anak:</label><input type="text" name="namaAnak" placeholder="Masukkan nama lengkap anak" required></div>
+            <div class="form-group"><label class="question-text">Kelas:</label>
+                <select name="kelas" required>
+                    <option value="" disabled selected>Pilih Kelas...</option>
+                    <option value="1A">1A</option><option value="1B">1B</option><option value="1C">1C</option>
+                    <option value="2A">2A</option><option value="2B">2B</option><option value="2C">2C</option>
+                    <option value="3A">3A</option><option value="3B">3B</option>
+                    <option value="4A">4A</option><option value="4B">4B</option><option value="4C">4C</option>
+                    <option value="5A">5A</option><option value="5B">5B</option>
+                    <option value="6A">6A</option><option value="6B">6B</option>
+                </select>
+            </div>
+            <div class="form-group"><label class="question-text">Nomor Absen:</label><input type="number" name="noAbsen" min="1" max="40" placeholder="Contoh: 15" required></div>
+            <div class="form-group"><label class="question-text">Nama Orang Tua / Wali:</label><input type="text" name="namaOrangTua" placeholder="Masukkan nama Bapak/Ibu" required></div>
+
+            <div class="section-title">B. Evaluasi Kuantitatif</div>
+            
+            <div class="legend-box">
+                <strong>Keterangan Skala Penilaian:</strong>
+                <ul>
+                    <li><strong>1</strong> = Sangat Tidak Setuju</li>
+                    <li><strong>2</strong> = Tidak Setuju</li>
+                    <li><strong>3</strong> = Cukup / Netral</li>
+                    <li><strong>4</strong> = Setuju</li>
+                    <li><strong>5</strong> = Sangat Setuju</li>
+                </ul>
+            </div>
+            
+            <div class="form-group">
+                <label class="question-text">1. Anak saya menunjukkan perkembangan pemahaman materi pelajaran yang signifikan pada tahun ini.</label>
+                <div class="likert-container">
+                    <div class="likert-item"><input type="radio" id="qA1_1" name="qAkademik1" value="1" required><label for="qA1_1">1</label></div>
+                    <div class="likert-item"><input type="radio" id="qA1_2" name="qAkademik1" value="2"><label for="qA1_2">2</label></div>
+                    <div class="likert-item"><input type="radio" id="qA1_3" name="qAkademik1" value="3"><label for="qA1_3">3</label></div>
+                    <div class="likert-item"><input type="radio" id="qA1_4" name="qAkademik1" value="4"><label for="qA1_4">4</label></div>
+                    <div class="likert-item"><input type="radio" id="qA1_5" name="qAkademik1" value="5"><label for="qA1_5">5</label></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="question-text">2. Metode pengajaran yang digunakan guru di kelas memotivasi anak untuk belajar.</label>
+                <div class="likert-container">
+                    <div class="likert-item"><input type="radio" id="qA2_1" name="qAkademik2" value="1" required><label for="qA2_1">1</label></div>
+                    <div class="likert-item"><input type="radio" id="qA2_2" name="qAkademik2" value="2"><label for="qA2_2">2</label></div>
+                    <div class="likert-item"><input type="radio" id="qA2_3" name="qAkademik2" value="3"><label for="qA2_3">3</label></div>
+                    <div class="likert-item"><input type="radio" id="qA2_4" name="qAkademik2" value="4"><label for="qA2_4">4</label></div>
+                    <div class="likert-item"><input type="radio" id="qA2_5" name="qAkademik2" value="5"><label for="qA2_5">5</label></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="question-text">3. Sekolah secara aktif dan efektif membantu pembentukan sikap, kedisiplinan, dan kemandirian anak.</label>
+                <div class="likert-container">
+                    <div class="likert-item"><input type="radio" id="qK_1" name="qKarakter" value="1" required><label for="qK_1">1</label></div>
+                    <div class="likert-item"><input type="radio" id="qK_2" name="qKarakter" value="2"><label for="qK_2">2</label></div>
+                    <div class="likert-item"><input type="radio" id="qK_3" name="qKarakter" value="3"><label for="qK_3">3</label></div>
+                    <div class="likert-item"><input type="radio" id="qK_4" name="qKarakter" value="4"><label for="qK_4">4</label></div>
+                    <div class="likert-item"><input type="radio" id="qK_5" name="qKarakter" value="5"><label for="qK_5">5</label></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="question-text">4. Anak saya merasa aman, nyaman, dan bebas dari perundungan (bullying) saat berada di sekolah.</label>
+                <div class="likert-container">
+                    <div class="likert-item"><input type="radio" id="qKes_1" name="qKesejahteraan" value="1" required><label for="qKes_1">1</label></div>
+                    <div class="likert-item"><input type="radio" id="qKes_2" name="qKesejahteraan" value="2"><label for="qKes_2">2</label></div>
+                    <div class="likert-item"><input type="radio" id="qKes_3" name="qKesejahteraan" value="3"><label for="qKes_3">3</label></div>
+                    <div class="likert-item"><input type="radio" id="qKes_4" name="qKesejahteraan" value="4"><label for="qKes_4">4</label></div>
+                    <div class="likert-item"><input type="radio" id="qKes_5" name="qKesejahteraan" value="5"><label for="qKes_5">5</label></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="question-text">5. Wali kelas sangat responsif dan transparan dalam menyampaikan informasi perkembangan anak.</label>
+                <div class="likert-container">
+                    <div class="likert-item"><input type="radio" id="qKom1_1" name="qKomunikasi1" value="1" required><label for="qKom1_1">1</label></div>
+                    <div class="likert-item"><input type="radio" id="qKom1_2" name="qKomunikasi1" value="2"><label for="qKom1_2">2</label></div>
+                    <div class="likert-item"><input type="radio" id="qKom1_3" name="qKomunikasi1" value="3"><label for="qKom1_3">3</label></div>
+                    <div class="likert-item"><input type="radio" id="qKom1_4" name="qKomunikasi1" value="4"><label for="qKom1_4">4</label></div>
+                    <div class="likert-item"><input type="radio" id="qKom1_5" name="qKomunikasi1" value="5"><label for="qKom1_5">5</label></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="question-text">6. Pihak sekolah terbuka dalam mendengarkan masukan dari orang tua.</label>
+                <div class="likert-container">
+                    <div class="likert-item"><input type="radio" id="qKom2_1" name="qKomunikasi2" value="1" required><label for="qKom2_1">1</label></div>
+                    <div class="likert-item"><input type="radio" id="qKom2_2" name="qKomunikasi2" value="2"><label for="qKom2_2">2</label></div>
+                    <div class="likert-item"><input type="radio" id="qKom2_3" name="qKomunikasi2" value="3"><label for="qKom2_3">3</label></div>
+                    <div class="likert-item"><input type="radio" id="qKom2_4" name="qKomunikasi2" value="4"><label for="qKom2_4">4</label></div>
+                    <div class="likert-item"><input type="radio" id="qKom2_5" name="qKomunikasi2" value="5"><label for="qKom2_5">5</label></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="question-text">7. Lingkungan sekolah, ruang kelas, dan fasilitas toilet selalu dalam keadaan bersih dan terawat.</label>
+                <div class="likert-container">
+                    <div class="likert-item"><input type="radio" id="qF_1" name="qFasilitas" value="1" required><label for="qF_1">1</label></div>
+                    <div class="likert-item"><input type="radio" id="qF_2" name="qFasilitas" value="2"><label for="qF_2">2</label></div>
+                    <div class="likert-item"><input type="radio" id="qF_3" name="qFasilitas" value="3"><label for="qF_3">3</label></div>
+                    <div class="likert-item"><input type="radio" id="qF_4" name="qFasilitas" value="4"><label for="qF_4">4</label></div>
+                    <div class="likert-item"><input type="radio" id="qF_5" name="qFasilitas" value="5"><label for="qF_5">5</label></div>
+                </div>
+            </div>
+
+            <div class="section-title">C. Evaluasi Kualitatif</div>
+            
+            <div class="form-group">
+                <label class="question-text">Apa satu program, kegiatan, atau hal spesifik pada tahun ajaran ini yang paling berdampak positif bagi anak Bapak/Ibu?</label>
+                <textarea name="qKekuatan" rows="3" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label class="question-text">Berdasarkan pengalaman Bapak/Ibu satu tahun terakhir, apa satu hal utama yang paling mendesak untuk diperbaiki oleh pihak sekolah?</label>
+                <textarea name="qPerbaikan" rows="3" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label class="question-text">Berikan masukan atau saran lain yang ingin Bapak/Ibu sampaikan kepada pihak sekolah?</label>
+                <textarea name="qSaran" rows="3"></textarea>
+            </div>
+
+            <button type="submit" id="submitBtn" class="submit-btn">Kirim Evaluasi Sekarang</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
